@@ -1,14 +1,15 @@
 .main_header {
     .header_bar {
-        background: linear-gradient(to right, #7D221F 0%,  #C93732 100%);
+        background: linear-gradient(to right, $color-palette-1 0%, $color-palette-3 100%);
 
         p {
             font-size: 0.875em;
-            color:#FBFBFB;
+            color: $font-color;
         }
 
         i {
             font-size: 1.6em;
+            color: $font-color;
         }
     }
 }
@@ -17,19 +18,19 @@
     width: 360px;
 }
 
-@media(min-width: 354px) and (max-width: 465px) {
+@media (min-width: 354px) and (max-width: 465px) {
     .brand-image-custom {
         width: 250px;
     }
 }
 
-@media(min-width: 304px) and (max-width: 353px) {
+@media (min-width: 304px) and (max-width: 353px) {
     .brand-image-custom {
         width: 200px;
     }
 }
 
-@media(max-width: 303px) {
+@media (max-width: 303px) {
     .brand-image-custom {
         width: 180px;
     }

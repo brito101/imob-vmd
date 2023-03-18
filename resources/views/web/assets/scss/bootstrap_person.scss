@@ -3,7 +3,8 @@
 $theme-colors: (
 'front': $color-front-default,
 'opposite': $color-front-opposite,
-'support': $color-front-support
+'support': $color-front-support,
+'title': $color-title
 );
 
 @import "~bootstrap/scss/bootstrap";

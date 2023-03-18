@@ -2,7 +2,7 @@ $font-family: 'Roboto';
 
 /** COLOR's DEFAULT **/
 $color-primary: #1a1f26;
-$color-secondary: #7D221F;
+$color-secondary: #00354E;
 
 /** LOGIN - LEFT */
 $dash-login-left-width: 40%;
@@ -13,7 +13,7 @@ $dash-login-left-color: #4E5760;
 
 /** LOGIN - RIGHT */
 $dash-login-right-width: 60%;
-$dash-login-right-background: url('../images/background-login.jpg') center/cover no-repeat;
+$dash-login-right-background: url('../images/home-hero.webp') center/cover no-repeat;
 
 /** DASH - SIDEBAR */
 $dash-sidebar-width: 280px;
@@ -64,8 +64,8 @@ $color-yellow: #F5B946;
 $color-red: #D94352;
 $color-orange: #F4645F;
 
-$color-theme: #7D221F;
-$color-opposit: #FBFBFB;
+$color-theme: #00354E;
+$color-opposite: #FBFBFB;
 $color-support: #4E5760;
 
 $button-hover-type: 'darken'; // darken || lighten
@@ -84,7 +84,7 @@ $theme-colors: map_merge(
 "red": $color-red,
 "orange": $color-orange,
 "theme": $color-theme,
-"opposit": $color-opposit,
+"opposite": $color-opposite,
 "support": $color-support
 ), $theme-colors
 );

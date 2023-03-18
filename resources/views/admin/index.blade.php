@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="{{ url(mix('backend/assets/css/reset.css')) }}"/>
         <link rel="stylesheet" href="{{ url(mix('backend/assets/css/boot.css')) }}"/>
         <link rel="stylesheet" href="{{ url(mix('backend/assets/css/login.css')) }}"/>
-        <link rel="icon" type="image/png" href="{{ url(asset('backend/assets/images/logo.svg')) }}"/>
+        <link rel="icon" type="image/webp" href="{{ url(asset('frontend/assets/images/logo.webp')) }}" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ env('APP_NAME') }} :: Administração</title>
@@ -20,8 +20,8 @@
                 <article class="dash_login_left_box radius">
                     <header class="dash_login_box_headline">
                         <div class="dash_login_box_headline_logo mb-0 ">
-                            <h1 class="d-none">Imob 2.0.0</h1>
-                            <img src="{{ url(asset('backend/assets/images/brand.svg')) }}" width="">
+                            <h1 class="d-none">{{ env('APP_NAME') }}</h1>
+                            <img src="{{ url(asset('backend/assets/images/brand.webp')) }}" width="">
                         </div>
                     </header>
 
@@ -36,7 +36,7 @@
                             <input type="password" name="password_check" placeholder="Informe sua senha" required/>
                         </label>
 
-                        <button class="gradient gradient-theme radius text-opposit icon-sign-in">Entrar</button>
+                        <button class="gradient gradient-theme radius text-opposite icon-sign-in">Entrar</button>
                     </form>
 
                     <footer class="text-support">

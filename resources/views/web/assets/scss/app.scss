@@ -8,6 +8,7 @@
 
 @import "addons/lightbox-reset";
 
+
 .img-responsive-16by9 {
     display: block;
     height: 0;
@@ -16,7 +17,6 @@
 }
 
 .carousel-item {
-
     img {
         height: 100%;
     }
@@ -34,11 +34,16 @@
 @import "pages/filter";
 
 .btn-custom {
-    background-image: linear-gradient(to right, #7D221F 0%,  #C93732 50%,  #7D221F 100%);
+    background-image: linear-gradient(
+        to right,
+        $color-palette-2 0%,
+        $color-palette-21 50%,
+        $color-palette-2 100%
+    );
 
     background-size: 200% auto;
     transition-duration: 0.5s;
-    text-decoration: none!important;
+    text-decoration: none !important;
     padding: 10px 15px;
     border: none;
     outline: none;
@@ -46,12 +51,14 @@
     line-height: 1.4;
     border-radius: 0.3rem;
     text-align: center;
+    color: $color-palette-1;
 
     &:hover {
         background-position: right center;
+        color: $color-palette-12;
     }
 }
 
 .bg-custom {
-    background-image: linear-gradient(to right, #7D221F 0%,  #C93732 100%);
+    background-image: linear-gradient(to right, $color-palette-1 0%, $color-palette-3 100%);
 }

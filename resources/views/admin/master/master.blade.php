@@ -17,7 +17,7 @@
         @yield('css')
     @endif
 
-    <link rel="icon" type="image/png" href="{{ url(asset('backend/assets/images/logo.svg')) }}" />
+    <link rel="icon" type="image/webp" href="{{ url(asset('backend/assets/images/logo.webp')) }}" />
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -47,16 +47,14 @@
         </nav>
         <!-- /.navbar -->
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-danger elevation-4">
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="{{ route('admin.home') }}" class="brand-link">
-                <img src="{{ url(asset('backend/assets/images/logo.svg')) }}" alt="{{ env('APP_NAME') }}"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">{{ env('APP_NAME') }}</span>
+            <a href="{{ route('admin.home') }}">
+                <img src="{{ url(asset('backend/assets/images/brand.jpeg')) }}" alt="{{ env('APP_NAME') }}">
             </a>
             <!-- Sidebar -->
-            <div class="sidebar">
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="sidebar mt-4">
+                <div class="user-panel pb-3 mb-3 d-flex">
                     <div class="image">
                         @php
                             if (\Illuminate\Support\Facades\Auth::user()->url_cover != '') {

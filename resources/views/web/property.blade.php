@@ -5,7 +5,7 @@
     <section class="main_property">
         <div class="main_property_header py-5 bg-light">
             <div class="container">
-                <h1 class="text-front">{{ $property->title }}</h1>
+                <h1 class="text-title">{{ $property->title }}</h1>
                 <p class="mb-0 text-support">{{ $property->category }} - {{ $property->type }} -
                     {{ $property->neighborhood }}</p>
             </div>
@@ -80,12 +80,12 @@
                         </div>
 
                         <div class="main_property_content_description">
-                            <h2 class="text-front">Conheça mais o imóvel</h2>
+                            <h2 class="text-title">Conheça mais o imóvel</h2>
                             {!! $property->description !!}
                         </div>
 
                         <div class="main_property_content_features">
-                            <h2 class="text-front">Características</h2>
+                            <h2 class="text-title">Características</h2>
                             <table class="table table-striped" style="margin-bottom: 40px;">
                                 <tbody>
                                     <tr>
@@ -125,7 +125,7 @@
                         </div>
 
                         <div class="main_property_structure">
-                            <h2 class="text-front">Estrutura</h2>
+                            <h2 class="text-title">Estrutura</h2>
 
                             <div class="row">
                                 @if ($property->air_conditioning == true)
@@ -209,7 +209,7 @@
                         </a>
 
                         <div class="main_property_contact">
-                            <h2 class="bg-custom text-opposit">Entre em contato</h2>
+                            <h2 class="bg-custom text-opposite">Entre em contato</h2>
 
                             <form action="{{ route('web.sendEmail') }}" method="post">
                                 @csrf

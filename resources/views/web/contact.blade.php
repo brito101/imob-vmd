@@ -43,22 +43,26 @@
             <div class="col-12 col-md-4">
                 <h2 class="icon-envelope">Por E-mail</h2>
                 <p>Nossos atendentes irão entrar em contato com você assim que possível.</p>
-                <p class="pt-2"><a href="mailto:contato@rodrigobrito.dev.br" class="text-front text-decoration-none">contato@rodrigobrito.dev.br</a></p>
+                <p class="pt-2"><a href="mailto:contato@vmdimóveis.com.br" class="text-front text-decoration-none">contato@vmdimóveis.com.br</a></p>
             </div>
 
             <div class="col-12 col-md-4">
                 <h2 class="icon-phone">Por Telefone</h2>
                 <p>Estamos disponíveis nos números abaixo no horário comercial.</p>
-                <p class="pt-2 text-front">+55 (21) 99224-7968</p>
+                <p class="pt-2 text-front">+55 (27) 99623-5139</p>
+                <p class="text-front">+55 (27) 99244-0238</p>
             </div>
 
             <div class="col-12 col-md-4">
                 <h2 class="icon-share-alt">Redes Sociais</h2>
                 <p>Fique por dentro do tudo o que a gente compartilha em nossas redes sociais!</p>
                 <p>
-                    <button class="btn-custom text-opposit icon-facebook icon-notext"></button> 
-                    <button class="btn-custom text-opposit icon-twitter icon-notext"></button> 
-                    <button class="btn-custom text-opposit icon-instagram icon-notext"></button>
+                    <a href="{{ env('CLIENT_DATA_LINK_FACEBOOK') }}" target="_blank"
+                    class="btn-custom text-opposit icon-facebook icon-notext"></a>
+                {{-- <a href="{{ env('CLIENT_DATA_LINK_TWITTER') }}" target="_blank"
+                    class="btn-custom text-opposit icon-twitter icon-notext"></a> --}}
+                <a href="{{ env('CLIENT_DATA_LINK_INSTAGRAM') }}" target="_blank"
+                    class="btn-custom text-opposit icon-instagram icon-notext"></a>
                 </p>
             </div>
         </div>

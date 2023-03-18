@@ -1,7 +1,7 @@
 .main_footer {
   h1 {
     font-size: 1.4em;
-    border-bottom: 1px solid #CCC;
+    border-bottom: 1px solid font-color;
   }
 
   ul {
@@ -19,6 +19,7 @@
 }
 
 .main_copyright {
- background: linear-gradient(to right, #7D221F 0%,  #C93732 50%,  #7D221F 100%);
+ background: linear-gradient(to right, $color-palette-1 0%,  $color-palette-3 50%, $color-palette-1 100%);
   font-size: 0.8em;
+  color: $font-color;
 }

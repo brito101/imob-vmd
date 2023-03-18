@@ -83,8 +83,8 @@ class Property extends Model {
             $images = $this->images();
             $cover = $images->first(['path']);
         }
-        if (empty($cover['path']) || !File::exists('../public/storage/' . $cover['path'])) {
-            return url(asset('backend/assets/images/login.svg'));
+        if (empty($cover['path'])) {
+            return url(asset('frontend/assets/images/share.png'));
         }
         return Storage::url(Cropper::thumb($cover['path'], 1366, 768));
     }

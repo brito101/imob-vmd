@@ -10,8 +10,11 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@babel/core": "^7.21.3",
+        "@babel/preset-env": "^7.20.2",
         "@fortawesome/fontawesome-free": "^5.8.2",
         "axios": "^0.21",
+        "babel-loader": "^9.1.2",
         "bootstrap": "^4.0.0",
         "bootstrap-select": "^1.13.10",
         "jquery": "^3.6",
@@ -21,6 +24,7 @@
         "postcss": "^8.1.14",
         "resolve-url-loader": "^3.1.2",
         "sass": "^1.20.1",
-        "sass-loader": "^8.0.0"
+        "sass-loader": "^8.0.0",
+        "webpack": "^5.76.2"
     }
 }

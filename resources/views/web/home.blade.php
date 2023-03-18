@@ -193,10 +193,10 @@
                     </div>
                     <div class="card-body">
                         <h2><a href="{{ route('web.buyProperty', ['slug' => $property->slug]) }}"
-                               class="text-front">{{ $property->title }}</a>
+                               class="text-title">{{ $property->title }}</a>
                         </h2>
-                        <p class="main_properties_item_category text-back">{{ $property->category }}</p>
-                        <p class="main_properties_item_type">{{ $property->type }}
+                        <p class="main_properties_item_category text-back text-front">{{ $property->category }}</p>
+                        <p class="main_properties_item_type text-front">{{ $property->type }}
                             - {{ $property->neighborhood }} <i
                                 class="icon-map-marker icon-notext"></i></p>
                         <p class="main_properties_price text-front">R$ {{ $property->sale_price }}</p>
