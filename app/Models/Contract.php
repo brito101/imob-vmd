@@ -232,7 +232,7 @@ class Contract extends Model {
 
         $terms[] = "<p><b>8. VENCIMENTO:</b> Fica estipulado o vencimento no dia {$this->due_date} do mês posterior ao do início de vigência do presente contrato.</p>";
 
-        $terms[] = "<p>Rio de Janeiro, " . date('d/m/Y') . ".</p>";
+        $terms[] = "<p>Vila Velha-ES, " . date('d/m/Y') . ".</p>";
 
         $terms[] = "<table width='100%' style='margin-top: 50px;'>
                            <tr>
@@ -247,7 +247,7 @@ class Contract extends Model {
                                 <td>Documento: {$this->ownerObject->document}</td>
                                 " . ($this->owner_spouse ? "<td>Documento: {$this->ownerObject->spouse_document}</td>" : "") . "
                            </tr>
-                           
+
                     </table>";
 
 
@@ -264,7 +264,7 @@ class Contract extends Model {
                                 <td>Documento: {$this->acquirerObject->document}</td>
                                 " . ($this->acquirer_spouse ? "<td>Documento: {$this->acquirerObject->spouse_document}</td>" : "") . "
                            </tr>
-                           
+
                     </table>";
 
         $terms[] = "<table width='100%' style='margin-top: 50px;'>
@@ -280,7 +280,7 @@ class Contract extends Model {
                                 <td>Documento: </td>
                                 <td>Documento: </td>
                            </tr>
-                           
+
                     </table>";
 
         return implode('', $terms);

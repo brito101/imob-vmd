@@ -107,7 +107,7 @@
                 <h1>Quer ficar por dentro da novidades?</h1>
 
                 <p>Deixe o seu nome e seu melhor e-mail nos campos abaixo e nós vamos lhe informar sobre os melhores
-                    negócios e todos os lançamentos do Rio de Janeiros</p>
+                    negócios e todos os lançamentos do Espirito Santo</p>
 
                 <form action="{{ route('web.sendEmail') }}" method="post" autocomplete="off">
                     @csrf
