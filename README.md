@@ -1,4 +1,4 @@
-# Imob 2.0.0
+# Imob VMD
 
 ## Commands
 - cp .env.example .env
