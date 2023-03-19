@@ -1,25 +1,26 @@
 .main_footer {
-  h1 {
-    font-size: 1.4em;
-    border-bottom: 1px solid font-color;
-  }
-
-  ul {
-    padding-left: 0px;
-
-    li {
-      list-style: none;
-      margin-bottom: 4px;
-
-      a {
-        color: #666;
-      }
+    h1 {
+        font-size: 1.4em;
+        border-bottom: 1px solid font-color;
     }
-  }
+
+    ul {
+        padding-left: 0px;
+
+        li {
+            list-style: none;
+            margin-bottom: 4px;
+
+            a {
+                color: #666;
+            }
+        }
+    }
 }
 
 .main_copyright {
- background: linear-gradient(to right, $color-palette-1 0%,  $color-palette-3 50%, $color-palette-1 100%);
-  font-size: 0.8em;
-  color: $font-color;
+    //  background: linear-gradient(to right, $color-palette-1 0%,  $color-palette-3 50%, $color-palette-1 100%);
+    background-color: $color-palette-1;
+    font-size: 0.8em;
+    color: $font-color;
 }

@@ -6,7 +6,7 @@
         <div class="container" style="height: 100%;">
             <div class="row align-items-center" style="height: 100%;">
                 <div class="col-lg-9">
-                    <p class="main_slide_content text-opposit">VIVA A MELHOR EXPERIÊNCIA DE ENCONTRAR O <span>IMÓVEL</span>
+                    <p class="main_slide_content text-opposit">EXPERIÊNCIA DE ENCONTRAR O <span>IMÓVEL</span>
                         DOS <span>SONHOS</span> PARA UMA FAMÍLIA <span>FELIZ</span>!</p>
                     <a href="{{ route('web.buy') }}" class="btn-custom text-opposit" style="font-size: 1.4rem;">Quero
                         <b>Comprar</b>!</a>
