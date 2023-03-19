@@ -55,7 +55,7 @@
                     <div
                         class="d-flex col-12 col-md-6 col-lg-4 justify-content-center align-items-center p-2 mx-auto text-opposit">
                         <i class="icon-envelope"></i>
-                        <p class="my-auto ml-3">contato@vmdimóveis.com.br<br />+55 (27) 99623-5139<br />+55 (27)
+                        <p class="my-auto ml-3">contato@vmdimoveis.com.br<br />+55 (27) 99623-5139<br />+55 (27)
                             99244-0238</p>
                     </div>
 
@@ -160,6 +160,9 @@
                         class="btn-custom text-opposit icon-twitter icon-notext"></a> --}}
                     <a href="{{ env('CLIENT_DATA_LINK_INSTAGRAM') }}" target="_blank"
                         class="btn-custom text-opposit icon-instagram icon-notext"></a>
+                    <a href="{{ env('CLIENT_DATA_LINK_YOUTUBE') }}" target="_blank"
+                        class="btn-custom text-opposit icon-youtube-play icon-notext"></a>
+
                 </div>
             </div>
         </div>

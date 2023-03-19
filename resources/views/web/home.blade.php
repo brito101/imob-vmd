@@ -22,7 +22,7 @@
             <div class="row">
                 <form action="{{ route('web.filter') }}" method="post" class="form-inline w-100">
                     @csrf
-                    <div class="form-group col-12 col-sm-6 col-lg-3">
+                    <div class="form-group col-6 col-lg-3">
                         <label for="search" class="mb-2 text-back text-support"><b>Comprar ou Alugar?</b></label>
                         <select class="selectpicker" id="search" name="filter_search" title="Escolha..." data-index="1"
                             data-action="{{ route('component.main-filter.search') }}">
@@ -30,7 +30,7 @@
                             <option value="rent">Alugar</option>
                         </select>
                     </div>
-                    <div class="form-group col-12 col-sm-6 col-lg-3">
+                    <div class="form-group col-6 col-lg-3">
                         <label for="category" class="mb-2 text-back text-support"><b>O que você quer?</b></label>
                         <select class="selectpicker" id="category" name="filter_category" title="Escolha..." data-index="2"
                             data-action="{{ route('component.main-filter.category') }}">
@@ -38,7 +38,7 @@
                         </select>
                     </div>
 
-                    <div class="form-group col-12 col-sm-6 mt-sm-2 mt col-lg-3 mt-lg-0">
+                    <div class="form-group col-6 mt-2 mt col-lg-3 mt-lg-0">
                         <label for="type" class="mb-2 d-block text-back text-support"><b>Qual o tipo do
                                 imóvel?</b></label>
                         <select class="selectpicker input-large" id="type" name="filter_type" multiple
@@ -47,7 +47,7 @@
                             <option disabled>Selecione o filtro anterior</option>
                         </select>
                     </div>
-                    <div class="form-group col-12 col-sm-6 mt-sm-2 col-lg-3 mt-lg-0">
+                    <div class="form-group col-6 mt-2 col-lg-3 mt-lg-0">
                         <label for="search_locale" class="mb-2 text-back text-support"><b>Onde você quer?</b></label>
                         <select class="selectpicker" name="filter_neighborhood" id="neighborhood" title="Escolha..."
                             data-index="4" data-action="{{ route('component.main-filter.neighborhood') }}" multiple
@@ -59,7 +59,7 @@
                     <div class="col-12 mt-3 form_advanced text-decoration-none" style="display: none;">
 
                         <div class="row">
-                            <div class="form-group col-12 col-sm-6 mt-sm-2 col-lg-3 mt-lg-0">
+                            <div class="form-group col-6 mt-2 col-lg-3 mt-lg-0">
                                 <label for="bedrooms" class="mb-2 text-back text-support"><b>Quartos</b></label>
                                 <select class="selectpicker" name="filter_bedrooms" data-index="5"
                                     data-action="{{ route('component.main-filter.bedrooms') }}" id="bedrooms"
@@ -68,7 +68,7 @@
                                 </select>
                             </div>
 
-                            <div class="form-group col-12 col-sm-6 mt-sm-2 col-lg-3 mt-lg-0">
+                            <div class="form-group col-6 mt-2 col-lg-3 mt-lg-0">
                                 <label for="bedrooms" class="mb-2 text-back text-support"><b>Suítes</b></label>
                                 <select class="selectpicker" name="filter_suites" id="suites" title="Escolha..."
                                     data-index="6" data-action="{{ route('component.main-filter.suites') }}">
@@ -76,7 +76,7 @@
                                 </select>
                             </div>
 
-                            <div class="form-group col-12 col-sm-6 mt-sm-2 col-lg-3 mt-lg-0">
+                            <div class="form-group col-6 mt-2 col-lg-3 mt-lg-0">
                                 <label for="bedrooms" class="mb-2 text-back text-support"><b>Banheiros</b></label>
                                 <select class="selectpicker" name="filter_bathrooms" id="bathrooms" title="Escolha..."
                                     data-index="7" data-action="{{ route('component.main-filter.bathrooms') }}">
@@ -84,7 +84,7 @@
                                 </select>
                             </div>
 
-                            <div class="form-group col-12 col-sm-6 mt-sm-2 col-lg-3 mt-lg-0">
+                            <div class="form-group col-6 mt-2 col-lg-3 mt-lg-0">
                                 <label for="bedrooms" class="mb-2 text-back text-support"><b>Garagem</b></label>
                                 <select class="selectpicker" name="filter_garage" id="garage" title="Escolha..."
                                     data-index="8" data-action="{{ route('component.main-filter.garage') }}">
@@ -94,7 +94,7 @@
                         </div>
 
                         <div class="row mt-3">
-                            <div class="form-group col-12 col-sm-6 mt-sm-2 col-lg-6 mt-lg-0">
+                            <div class="form-group col-6 mt-2 col-lg-6 mt-lg-0">
                                 <label for="bedrooms" class="mb-2 text-back text-support"><b>Preço Base</b></label>
                                 <select class="selectpicker" name="filter_base" id="base" title="Escolha..."
                                     data-index="9" data-action="{{ route('component.main-filter.priceBase') }}">
@@ -102,7 +102,7 @@
                                 </select>
                             </div>
 
-                            <div class="form-group col-12 col-sm-6 mt-sm-2 col-lg-6 mt-lg-0">
+                            <div class="form-group col-6 mt-2 col-lg-6 mt-lg-0">
                                 <label for="bedrooms" class="mb-2 text-back text-support"><b>Preço Limite</b></label>
                                 <select class="selectpicker" name="filter_limit" id="limit" title="Escolha..."
                                     data-index="10" data-action="{{ route('component.main-filter.priceLimit') }}">

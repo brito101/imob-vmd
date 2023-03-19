@@ -34,14 +34,14 @@
 @import "pages/filter";
 
 .btn-custom {
-    background-image: linear-gradient(
-        to right,
-        $color-palette-2 0%,
-        $color-palette-21 50%,
-        $color-palette-2 100%
-    );
+    // background-image: linear-gradient(
+    //     to right,
+    //     $color-palette-2 0%,
+    //     $color-palette-21 50%,
+    //     $color-palette-2 100%
+    // );
 
-    background-size: 200% auto;
+    // background-size: 200% auto;
     transition-duration: 0.5s;
     text-decoration: none !important;
     padding: 10px 15px;
@@ -52,9 +52,11 @@
     border-radius: 0.3rem;
     text-align: center;
     color: $color-palette-1;
+    background-color: $color-palette-2;
 
     &:hover {
-        background-position: right center;
+        // background-position: right center;
+        background-color: $color-palette-21;
         color: $color-palette-12;
     }
 }
