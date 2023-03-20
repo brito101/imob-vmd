@@ -23,33 +23,33 @@ class Property extends FormRequest {
      */
     public function rules() {
         return [
-            'user' => 'required',
-            'category' => 'required',
-            'type' => 'required',
+            'user' => 'required|exists:users,id',
+            'category' => 'required|max:191',
+            'type' => 'required|max:191',
             'sale_price' => 'required_if:sale,on',
             'rent_price' => 'required_if:rent,on',
             'tribute' => 'required',
             'condominium' => 'required',
             'description' => 'required',
-            'bedrooms' => 'required',
-            'suites' => 'required',
-            'bathrooms' => 'required',
-            'rooms' => 'required',
-            'garage' => 'required',
-            'garage_covered' => 'required',
-            'area_total' => 'required',
-            'area_util' => 'required',
+            'bedrooms' => 'required|integer',
+            'suites' => 'required|integer',
+            'bathrooms' => 'required|integer',
+            'rooms' => 'required|integer',
+            'garage' => 'required|integer',
+            'garage_covered' => 'required|integer',
+            'area_total' => 'required|integer',
+            'area_util' => 'required|integer',
             // Address
             'zipcode' => 'required|min:8|max:10',
-            'street' => 'required',
-            'number' => 'required',
-            'neighborhood' => 'required',
-            'state' => 'required',
-            'city' => 'required',
-            'title' => 'required'
+            'street' => 'required|max:191',
+            'number' => 'required|max:191',
+            'neighborhood' => 'required|max:191',
+            'state' => 'required|max:191',
+            'city' => 'required|max:191',
+            'title' => 'required|max:191'
         ];
     }
-    
+
     public function messages()
     {
         return [

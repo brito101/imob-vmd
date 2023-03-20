@@ -27,7 +27,7 @@ class User extends FormRequest {
             'name' => 'required|min:3|max:191',
             'genre' => 'in:male,female,other',
             'document' => (!empty($this->request->all()['id']) ? 'required|min:11|max:14|unique:users,document,' . $this->request->all()['id'] : 'required|min:11|max:14|unique:users,document'),
-            'document_secondary' => 'required|min:8|max:12',
+            'document_secondary' => 'required|max:12',
             'document_secondary_complement' => 'required',
             'date_of_birth' => 'required|date_format:d/m/Y',
             'place_of_birth' => 'required',
