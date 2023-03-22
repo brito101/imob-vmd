@@ -132,7 +132,7 @@
                                 @endif
                                 @endif
                                 <a href="{{ route((session('sale') == true || (!empty($type) && $type == 'sale') || ($property->rent == false) ? 'web.buyProperty' : 'web.rentProperty'), ['slug' => $property->slug]) }}"
-                                   class="btn-custom text-opposit btn-block shadow-sm">Ver Imóvel</a>
+                                   class="btn-custom text-opposit btn-block shadow-sm font-weight-bold">Ver Imóvel</a>
                             </div>
                             <div class="card-footer d-flex">
                                 <div class="main_properties_features col-4 text-center">

@@ -8,7 +8,7 @@
                 <div class="col-lg-9">
                     <p class="main_slide_content text-opposit">EXPERIÊNCIA DE ENCONTRAR O <span>IMÓVEL</span>
                         DOS <span>SONHOS</span> PARA UMA FAMÍLIA <span>FELIZ</span>!</p>
-                    <a href="{{ route('web.buy') }}" class="btn-custom text-opposit" style="font-size: 1.4rem;">Quero
+                    <a href="{{ route('web.buy') }}" class="btn-custom-2 text-opposit" style="font-size: 1.4rem;">Quero
                         <b>Comprar</b>!</a>
                     <a href="{{ route('web.rent') }}" class="btn-custom text-opposit" style="font-size: 1.4rem;">Quero
                         <b>Alugar</b>!</a>
@@ -218,7 +218,7 @@
                                         - {{ $property->neighborhood }} <i class="icon-map-marker icon-notext"></i></p>
                                     <p class="main_properties_price text-front">R$ {{ $property->sale_price }}</p>
                                     <a href="{{ route('web.buyProperty', ['slug' => $property->slug]) }}"
-                                        class="btn-custom text-opposit btn-block shadow-sm">Ver Imóvel</a>
+                                        class="btn-custom text-opposit btn-block shadow-sm font-weight-bold">Ver Imóvel</a>
                                 </div>
                                 <div class="card-footer d-flex">
                                     <div class="main_properties_features col-4 text-center">
@@ -273,7 +273,7 @@
                                         - {{ $property->neighborhood }} <i class="icon-map-marker icon-notext"></i></p>
                                     <p class="main_properties_price text-front">R$ {{ $property->rent_price }}/mês</p>
                                     <a href="{{ route('web.rentProperty', ['slug' => $property->slug]) }}"
-                                        class="btn-custom text-opposit btn-block shadow-sm">Ver Imóvel</a>
+                                        class="btn-custom text-opposit btn-block shadow-sm font-weight-bold">Ver Imóvel</a>
                                 </div>
                                 <div class="card-footer d-flex">
                                     <div class="main_properties_features col-4 text-center">

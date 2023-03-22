@@ -88,8 +88,8 @@
                         </li>
                         <li class="nav-item"><a href="{{ route('web.rent') }}" class="nav-link text-support">Alugar</a>
                         </li>
-                        <li class="nav-item"><a href="{{ route('web.spotlight') }}"
-                                class="nav-link text-front">Destaque</a></li>
+                        {{-- <li class="nav-item"><a href="{{ route('web.spotlight') }}"
+                                class="nav-link text-front">Destaque</a></li> --}}
                         <li class="nav-item"><a href="{{ route('web.contact') }}"
                                 class="nav-link text-support">Contato</a></li>
                     </ul>
@@ -134,8 +134,8 @@
                         <li><a href="{{ route('web.home') }}" class="text-back text-decoration-none">Home</a></li>
                         <li><a href="{{ route('web.buy') }}" class="text-back text-decoration-none">Comprar</a></li>
                         <li><a href="{{ route('web.rent') }}" class="text-back text-decoration-none">Alugar</a></li>
-                        <li><a href="{{ route('web.spotlight') }}"
-                                class="text-front text-decoration-none">Destaque</a></li>
+                        {{-- <li><a href="{{ route('web.spotlight') }}"
+                                class="text-front text-decoration-none">Destaque</a></li> --}}
                         <li><a href="{{ route('web.contact') }}" class="text-back text-decoration-none">Contato</a>
                         </li>
                         <li><a href="{{ route('web.policy') }}" class="text-back text-decoration-none">Política de
