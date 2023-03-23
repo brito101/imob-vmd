@@ -40,12 +40,12 @@
                     </form>
 
                     <footer class="text-support">
-                        <p class="text-bold">Desenvolvido por <a href="https://www.rodrigobrito.dev.br" class="text-theme">www.<b>rodrigobrito</b>.dev.br</a></p>
+                        <p class="text-bold">Desenvolvido por <a href="https://www.vmdimoveis.com.br/" class="text-theme">VDM Imóveis</p>
                         <p class="text-bold">&copy; <?= date("Y"); ?> - Todos os direitos reservados</p>
                         <p class="dash_login_left_box_support">
                             <a target="_blank"
                                class="icon-whatsapp transition text-bold text-theme"
-                               href="https://api.whatsapp.com/send?phone=55+021+99224-7968&text=Olá, preciso de ajuda com o login."
+                               href="https://api.whatsapp.com/send?phone=55+&text=Olá, preciso de ajuda com o login."
                                >Precisa de Suporte?</a>
                         </p>
                     </footer>

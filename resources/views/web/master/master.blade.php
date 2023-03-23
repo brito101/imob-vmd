@@ -175,9 +175,8 @@
                     <p class="mb-0">CRECI 11185-J | CNPJ: 43.100.157/0001.00 | Vila Velha-ES</p>
                     <p class="mb-0">Todos os Direitos Reservados - {{ env('APP_NAME') }} ®</p>
                     <p class="mb-0">Desenvolvido com <i class="icon-heart text-back"></i>por
-                        <a href="https://www.rodrigobrito.dev.br" target="_blank"
-                            class="text-white text-decoration-none">
-                            Rodrigo Brito</a>
+                        <a href="https://www.vmdimoveis.com.br" class="text-white text-decoration-none">
+                            VDM Imóveis</a>
                     </p>
                 </div>
             </div>
