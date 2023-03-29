@@ -145,7 +145,7 @@
 
                 <div class="col-12 col-md-9 col-lg-6">
                     <h1 class="pb-2">Nos <span class="text-front">Conheça!</span></h1>
-                    <p>Nossa maior satisfação é lhe ajudar a encontrar seu imóvel dos sonhos nos bairros de toda grade Vitória.</p>
+                    <p>Nossa maior satisfação é lhe ajudar a encontrar seu imóvel dos sonhos nos bairros de toda grande Vitória.</p>
 
                     <h1 class="pb-2">Quer <span class="text-front">Investir?</span></h1>
                     <p>Entre em contato com a nossa equipe e vamos lhe informar sempre sobre os melhores negócios.</p>
