@@ -203,7 +203,7 @@
 
                     <div class="col-12 col-lg-4 mt-md-0">
                         <a target="_blank"
-                            href="https://api.whatsapp.com/send?phone=55+{{ $propertyOwner->cell }}&text=Olá, me interessei sobre o seu anúncio."
+                            href="https://api.whatsapp.com/send?phone=5527992440238&text=Olá, me interessei sobre o seu anúncio."
                             class="btn btn-success btn-lg btn-block icon-whatsapp mb-3 text-opposit">Converse com o
                             Corretor!
                         </a>
