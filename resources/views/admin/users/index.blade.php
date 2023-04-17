@@ -61,7 +61,7 @@
                                                     <th>Nome Completo</th>
                                                     <th>CPF</th>
                                                     <th>E-mail</th>
-                                                    <th>Nascimento</th>
+                                                    <th>Tipo</th>
                                                     @can('Remover Usuários')
                                                     <th>Ações</th>
                                                     @endcan
@@ -78,7 +78,7 @@
                                                     @endcan
                                                     <td class="text-muted">{{ $user->document }}</td>
                                                     <td title="Encaminhar E-mail"><a href="mailto: {{ $user->email }}" class="text-primary bold">{{ $user->email }}</a></td>
-                                                    <td class="text-muted">{{ $user->date_of_birth }}</td>
+                                                    <td class="text-muted">{{ $user->getRoleNames()->first(); }}</td>
                                                     @can('Remover Usuários')
                                                     <td class="text-center">
                                                         <form action="{{ route('admin.users.destroy', ['user' => $user->id]) }}" method="post">

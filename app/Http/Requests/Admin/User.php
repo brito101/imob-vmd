@@ -6,14 +6,16 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
-class User extends FormRequest {
+class User extends FormRequest
+{
 
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize() {
+    public function authorize()
+    {
         return Auth::check();
     }
 
@@ -22,21 +24,22 @@ class User extends FormRequest {
      *
      * @return array
      */
-    public function rules() {
+    public function rules()
+    {
         return [
             'name' => 'required|min:3|max:191',
             'genre' => 'in:male,female,other',
             'document' => (!empty($this->request->all()['id']) ? 'required|min:11|max:14|unique:users,document,' . $this->request->all()['id'] : 'required|min:11|max:14|unique:users,document'),
             'document_secondary' => 'required|max:12',
             'document_secondary_complement' => 'required',
-            'date_of_birth' => 'required|date_format:d/m/Y',
-            'place_of_birth' => 'required',
-            'civil_status' => 'required|in:married,separated,single,divorced,widower',
+            'date_of_birth' => 'nullable|date_format:d/m/Y',
+            'place_of_birth' => 'nullable',
+            'civil_status' => 'nullable|in:married,separated,single,divorced,widower',
             'cover' => 'image',
             // Income
-            'occupation' => 'required',
-            'income' => 'required',
-            'company_work' => 'required',
+            'occupation' => 'nullable',
+            'income' => 'nullable',
+            'company_work' => 'nullable',
             // Address
             'zipcode' => 'required|min:8|max:10',
             'street' => 'required',
@@ -60,7 +63,11 @@ class User extends FormRequest {
             'spouse_occupation' => 'required_if:civil_status,married,separated',
             'spouse_income' => 'required_if:civil_status,married,separated',
             'spouse_company_work' => 'required_if:civil_status,married,separated',
+
+            // Broker
+            'broker' => 'nullable|max:191',
+            'creci' => 'nullable|max:191',
+            'commission' => 'nullable|max:191',
         ];
     }
-
 }

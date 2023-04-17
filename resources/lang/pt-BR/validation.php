@@ -234,6 +234,9 @@ return [
         'garage_covered' => 'garagem coberta',
         'area_total' => 'área total',
         'area_util' => 'área útil',
-        'type_of_communion' => 'tipo de comunhão'
+        'type_of_communion' => 'tipo de comunhão',
+        'broker' => 'corretor',
+        'creci' => 'CRECI',
+        'commission' => 'comissão',
     ],
 ];

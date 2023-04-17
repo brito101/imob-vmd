@@ -34,7 +34,7 @@ class UserController extends Controller {
         if (!Auth::user()->hasPermissionTo('Listar Usuários - Equipe')) {
             throw new UnauthorizedException('403', 'You do not have the required authorization.');
         }
-        $users = User::where('admin', 1)->get();
+        $users = User::where('admin', 1)->orWhere('broker', 1)->get();
         return view('admin.users.team', [
             'users' => $users
         ]);
@@ -77,7 +77,7 @@ class UserController extends Controller {
         }
         return redirect()->route('admin.users.edit', [
                     'user' => $userCreate->id
-                ])->with(['message' => 'Cliente criado com sucesso!', 'type' => 'success', 'icon' => 'check']);
+                ])->with(['message' => 'Usuário criado com sucesso!', 'type' => 'success', 'icon' => 'check']);
     }
 
     /**
@@ -165,7 +165,7 @@ class UserController extends Controller {
         }
         return redirect()->route('admin.users.edit', [
                     'user' => $user->id
-                ])->with(['message' => 'Cliente atualizado com sucesso!', 'type' => 'success', 'icon' => 'check']);
+                ])->with(['message' => 'Usuário atualizado com sucesso!', 'type' => 'success', 'icon' => 'check']);
     }
 
     /**

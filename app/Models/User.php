@@ -65,7 +65,10 @@ class User extends Authenticatable implements JWTSubject
         'lessor',
         'lessee',
         'admin',
-        'client'
+        'client',
+        'broker',
+        'creci',
+        'commission',
     ];
 
     /**
@@ -98,6 +101,11 @@ class User extends Authenticatable implements JWTSubject
     public function scopeLessees($query)
     {
         return $query->where('lessee', true);
+    }
+
+    public function scopeBrokers($query)
+    {
+        return $query->where('broker', true);
     }
 
     /**
@@ -262,6 +270,11 @@ class User extends Authenticatable implements JWTSubject
     public function setLesseeAttribute($value)
     {
         $this->attributes['lessee'] = ($value == true || $value === 'on' ? 1 : 0);
+    }
+
+    public function setBrokerAttribute($value)
+    {
+        $this->attributes['broker'] = ($value == true || $value === 'on' ? 1 : 0);
     }
 
     public function setDocumentAttribute($value)

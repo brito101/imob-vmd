@@ -90,7 +90,7 @@ class AuthController extends Controller {
     private function isAdmin() {
         $user = User::where('id', Auth::user()->id)->first();
 
-        if ($user->admin == 1) {
+        if ($user->admin == 1 || $user->broker == 1) {
             return true;
         } else {
             return false;
