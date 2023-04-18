@@ -6,13 +6,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark"><i class="icon-user-plus"></i>Novo Usuário</h1>
+                    <h1 class="m-0 text-dark"><i class="icon-user-plus"></i>Novo Cliente</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6 d-flex justify-content-end">
                     <ol class="breadcrumb  my-auto">
                         <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('admin.users.index') }}">Usuários</a></li>
-                        <li class="breadcrumb-item active">Novo Usuário</li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.clients.index') }}">Clientes</a></li>
+                        <li class="breadcrumb-item active">Novo Cliente</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -37,7 +37,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header bg-gradient-dark">
-                            <h5 class="card-title text-white"><i class="icon-pencil-square-o"></i>Dados do Usuário</h5>
+                            <h5 class="card-title text-white"><i class="icon-pencil-square-o"></i>Dados do Cliente</h5>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool text-white" data-card-widget="collapse">
                                     <i class="fas fa-minus"></i>
@@ -57,12 +57,9 @@
                                     <li class="nav_tabs_item">
                                         <a href="#complementary" class="nav_tabs_item_link">Dados Complementares</a>
                                     </li>
-                                    <li class="nav_tabs_item">
-                                        <a href="#management" class="nav_tabs_item_link">Administrativo</a>
-                                    </li>
                                 </ul>
 
-                                <form class="app_form" action="{{ route('admin.users.store') }}" method="post"
+                                <form class="app_form" action="{{ route('admin.clients.store') }}" method="post"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="nav_tabs_content">
@@ -70,18 +67,13 @@
                                             <div class="label_gc bg-gradient-lightblue">
                                                 <span class="legend">Perfil:</span>
                                                 <label class="label">
-                                                    <input type="checkbox" name="lessee"
+                                                    <input type="checkbox" name="lessee" id="lessee"
                                                         {{ old('lessee') == 'on' || old('lessee') == true ? 'checked' : '' }}><span>Vendedor/Locatário</span>
                                                 </label>
 
                                                 <label class="label">
-                                                    <input type="checkbox" name="lessor"
+                                                    <input type="checkbox" name="lessor" id="lessor"
                                                         {{ old('lessor') == 'on' || old('lessor') == true ? 'checked' : '' }}><span>Comprador/Locador</span>
-                                                </label>
-
-                                                <label class="label">
-                                                    <input type="checkbox" name="broker"
-                                                        {{ old('broker') == 'on' || old('broker') == true ? 'checked' : '' }}><span>Corretor</span>
                                                 </label>
                                             </div>
 
@@ -110,7 +102,7 @@
                                                 <label class="label">
                                                     <span class="legend">*CPF:</span>
                                                     <input type="tel" class="mask-doc" name="document"
-                                                        placeholder="CPF" value="{{ old('document') }}" />
+                                                        placeholder="CPF do Cliente" value="{{ old('document') }}" />
                                                 </label>
                                             </div>
 
@@ -118,7 +110,7 @@
                                                 <label class="label">
                                                     <span class="legend">*RG:</span>
                                                     <input type="text" name="document_secondary"
-                                                        placeholder="RG"
+                                                        placeholder="RG do Cliente"
                                                         value="{{ old('document_secondary') }}" />
                                                 </label>
 
@@ -189,7 +181,7 @@
                                                         <label class="label">
                                                             <span class="legend">*Profissão:</span>
                                                             <input type="text" name="occupation"
-                                                                placeholder="Profissão"
+                                                                placeholder="Profissão do Cliente"
                                                                 value="{{ old('occupation') }}" />
                                                         </label>
 
@@ -294,16 +286,7 @@
                                                                 value="{{ old('cell') }}" />
                                                         </label>
                                                     </div>
-                                                </div>
-                                            </div>
 
-                                            <div class="app_collapse mt-2">
-                                                <div class="app_collapse_header collapse  text-muted">
-                                                    <h3>Acesso</h3>
-                                                    <span class="icon-plus-circle icon-notext"></span>
-                                                </div>
-
-                                                <div class="app_collapse_content d-none">
                                                     <div class="label_g2">
                                                         <label class="label">
                                                             <span class="legend">*E-mail:</span>
@@ -311,15 +294,10 @@
                                                                 placeholder="Melhor e-mail"
                                                                 value="{{ old('email') }}" />
                                                         </label>
-
-                                                        <label class="label">
-                                                            <span class="legend">Senha:</span>
-                                                            <input type="password" name="password"
-                                                                placeholder="Senha de acesso" value="" />
-                                                        </label>
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </div>
 
                                         <div id="complementary" class="d-none">
@@ -375,7 +353,7 @@
                                                         <label class="label">
                                                             <span class="legend">CPF:</span>
                                                             <input type="text" class="mask-doc" name="spouse_document"
-                                                                placeholder="CPF"
+                                                                placeholder="CPF do Cliente"
                                                                 value="{{ old('spouse_document') }}" />
                                                         </label>
                                                     </div>
@@ -384,7 +362,7 @@
                                                         <label class="label">
                                                             <span class="legend">RG:</span>
                                                             <input type="text" name="spouse_document_secondary"
-                                                                placeholder="RG"
+                                                                placeholder="RG do Cliente"
                                                                 value="{{ old('spouse_document_secondary') }}" />
                                                         </label>
 
@@ -418,7 +396,7 @@
                                                         <label class="label">
                                                             <span class="legend">Profissão:</span>
                                                             <input type="text" name="spouse_occupation"
-                                                                placeholder="Profissão"
+                                                                placeholder="Profissão do Cliente"
                                                                 value="{{ old('spouse_occupation') }}" />
                                                         </label>
 
@@ -436,57 +414,62 @@
                                                             placeholder="Contratante"
                                                             value="{{ old('spouse_company_work') }}" />
                                                     </label>
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                        <div id="management" class="d-none">
-                                            <div class="label_gc bg-gradient-lightblue rounded">
-                                                <span class="legend">Acesso:</span>
-                                                <label class="label">
-                                                    <input type="checkbox" name="admin"
-                                                        {{ old('admin') == 'on' || old('admin') == true ? 'checked' : '' }}><span>Administrativo</span>
-                                                </label>
 
-                                                <label class="label">
-                                                    <input type="checkbox" name="client"
-                                                        {{ old('client') == 'on' || old('client') == true ? 'checked' : '' }}><span>Cliente</span>
-                                                </label>
-                                            </div>
-
-                                            <div class="pt-2 bg-white">
-                                                <div class="label_g2">
-                                                    <label class="label">
-                                                        <span class="legend">CRECI:</span>
-                                                        <input type="text" name="creci"
-                                                            placeholder="Código do registro"
-                                                            value="{{ old('creci') }}" />
-                                                    </label>
-
-                                                    <label class="label">
-                                                        <span class="legend">Comissão:</span>
-                                                        <input type="text" name="commission"
-                                                            placeholder="Valor da comissão"
-                                                            value="{{ old('commission') }}" />
-                                                    </label>
                                                 </div>
                                             </div>
 
-                                            @can('Atribuir Permissões')
-                                                <div class="pt-2 bg-white">
-                                                    <label class="label m-2 text-muted">
-                                                        <label class="d-block font-weight-normal text-sm">Concessão de
-                                                            Perfil:</label>
-                                                        @foreach ($roles as $role)
-                                                            <label class="label">
-                                                                <input type="checkbox" name="acl_{{ $role->id }}"
-                                                                    {{ $role->can == 1 ? 'checked' : '' }}>
-                                                                <span>{{ $role->name }}</span>
-                                                            </label>
-                                                        @endforeach
-                                                    </label>
+                                            <div class="app_collapse">
+                                                <div class="app_collapse_header collapse text-muted">
+                                                    <h3>Dados Bancários Vendedor/Locador</h3>
+                                                    <span class="icon-plus-circle icon-notext"></span>
                                                 </div>
-                                            @endcan
+
+                                                <div class="app_collapse_content d-none">
+                                                    <label class="label text-muted">
+                                                        <span class="legend">Dados Bancários:</span>
+                                                        <input type="text" name="bank_account"
+                                                            placeholder="Banco, agência, conta..."
+                                                            value="{{ old('bank_account') }}" />
+                                                    </label>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="app_collapse">
+                                                <div class="app_collapse_header collapse text-muted">
+                                                    <h3>Orçamento do Comprador/Locatário</h3>
+                                                    <span class="icon-plus-circle icon-notext"></span>
+                                                </div>
+
+                                                <div class="app_collapse_content d-none">
+
+                                                    <div class="label_g2">
+                                                        <label class="label">
+                                                            <span class="legend">Orçamento Máximo:</span>
+                                                            <input type="text" name="max_budget"
+                                                                placeholder="Valor do orçamento máximo"
+                                                                value="{{ old('max_budget') }}" />
+                                                        </label>
+
+                                                        <label class="label">
+                                                            <span class="legend">FGTS:</span>
+                                                            <input type="text" name="fgts"
+                                                                placeholder="Valor do FGTS"
+                                                                value="{{ old('fgts') }}" />
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="label_g2">
+                                                        <label class="label">
+                                                            <span class="legend">Valor de Entrada:</span>
+                                                            <input type="text" name="entry_value"
+                                                                placeholder="Valor de Entrada"
+                                                                value="{{ old('entry_value') }}" />
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -507,4 +490,29 @@
         </div>
     </section>
 
+@endsection
+
+@section('js')
+    <script>
+        $('#lessee').change(function() {
+            if ($(this).get(0).checked) {
+                $('input[name="bank_account"]').attr('disabled', false);
+            } else {
+                $('input[name="bank_account"]').attr('disabled', true).val("");
+            }
+        });
+
+        $('#lessor').change(function() {
+            if ($(this).get(0).checked) {
+                $('input[name="max_budget"]').attr('disabled', false);
+                $('input[name="fgts"]').attr('disabled', false);
+                $('input[name="entry_value"]').attr('disabled', false);
+
+            } else {
+                $('input[name="max_budget"]').attr('disabled', true).val("");
+                $('input[name="fgts"]').attr('disabled', true).val("");
+                $('input[name="entry_value"]').attr('disabled', true).val("");
+            }
+        });
+    </script>
 @endsection

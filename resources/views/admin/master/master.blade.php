@@ -89,7 +89,7 @@
                         @can('Listar Usuários')
                             {{-- Menu Usuários --}}
                             <li
-                                class="nav-item has-treeview {{ menuOpen('admin.users') }} {{ menuOpen('admin.companies') }}">
+                                class="nav-item has-treeview {{ menuOpen('admin.users') }} {{ menuOpen('admin.companies') }} {{ menuOpen('admin.clients') }} {{ menuOpen('admin.brokers') }}">
                                 <a href="#"
                                     class="nav-link {{ isActive('admin.users') }}  {{ isActive('admin.companies') }}"><i
                                         class="nav-icon fas fa-users"></i>
@@ -101,6 +101,16 @@
                                                 class="nav-link {{ isActive('admin.users.index') }}"><i
                                                     class="far fa-circle nav-icon"></i>
                                                 <p>Ver Todos</p>
+                                            </a></li>
+                                        <li class="nav-item"><a href="{{ route('admin.brokers.index') }}"
+                                                class="nav-link {{ isActive('admin.brokers.index') }}"><i
+                                                    class="far fa-circle nav-icon"></i>
+                                                <p>Corretores</p>
+                                            </a></li>
+                                        <li class="nav-item"><a href="{{ route('admin.clients.index') }}"
+                                                class="nav-link {{ isActive('admin.clients.index') }}"><i
+                                                    class="far fa-circle nav-icon"></i>
+                                                <p>Clientes</p>
                                             </a></li>
                                     @endcan
                                     @can('Listar Empresas')
@@ -121,7 +131,17 @@
                                         <li class="nav-item"><a href="{{ route('admin.users.create') }}"
                                                 class="nav-link {{ isActive('admin.users.create') }}"><i
                                                     class="far fa-circle nav-icon"></i>
-                                                <p>Criar Novo</p>
+                                                <p>Criar Usuário</p>
+                                            </a></li>
+                                        <li class="nav-item"><a href="{{ route('admin.brokers.create') }}"
+                                                class="nav-link {{ isActive('admin.brokers.create') }}"><i
+                                                    class="far fa-circle nav-icon"></i>
+                                                <p>Criar Corretor</p>
+                                            </a></li>
+                                        <li class="nav-item"><a href="{{ route('admin.clients.create') }}"
+                                                class="nav-link {{ isActive('admin.clients.create') }}"><i
+                                                    class="far fa-circle nav-icon"></i>
+                                                <p>Criar Cliente</p>
                                             </a></li>
                                     @endcan
                                 </ul>

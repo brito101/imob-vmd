@@ -185,7 +185,7 @@ $(function () {
         }
     });
 
-//ENABLE/DISABLE SPOUSE 
+//ENABLE/DISABLE SPOUSE
     function normalizeSpouse() {
         if (typeof ($('select[name="civil_status"]')) !== 'undefined') {
             if ($('select[name="civil_status"]').val() === 'married' || $('select[name="civil_status"]').val() === 'separated') {

@@ -69,6 +69,10 @@ class User extends Authenticatable implements JWTSubject
         'broker',
         'creci',
         'commission',
+        'max_budget',
+        'fgts',
+        'entry_value',
+        'bank_account',
     ];
 
     /**

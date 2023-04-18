@@ -238,5 +238,9 @@ return [
         'broker' => 'corretor',
         'creci' => 'CRECI',
         'commission' => 'comissão',
+        'max_budget' => 'orçamento máximo',
+        'fgts' => 'FGTS',
+        'entry_value' => 'valor de entrada',
+        'bank_account' => 'dados bancários',
     ],
 ];

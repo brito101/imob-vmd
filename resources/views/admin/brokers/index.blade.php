@@ -5,16 +5,16 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark"><i class="icon-users"></i>Usuários</h1>
+                    <h1 class="m-0 text-dark"><i class="icon-users"></i>Corretores</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6 d-flex justify-content-end">
                     <ol class="breadcrumb  my-auto">
                         <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Usuários</li>
+                        <li class="breadcrumb-item active">Corretores</li>
                     </ol>
                     @can('Cadastrar Usuários')
-                        <a href="{{ route('admin.users.create') }}" class="btn btn bg-gradient-lightblue icon-plus ml-1">Criar
-                            Usuário</a>
+                        <a href="{{ route('admin.brokers.create') }}" class="btn btn bg-gradient-lightblue icon-plus ml-1">Criar
+                            Corretor</a>
                     @endcan
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -39,7 +39,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header bg-gradient-dark">
-                            <h5 class="card-title text-white"><i class="icon-users"></i>Usuários Cadastrados</h5>
+                            <h5 class="card-title text-white"><i class="icon-users"></i>Corretores Cadastrados</h5>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool text-white" data-card-widget="collapse">
                                     <i class="fas fa-minus"></i>
@@ -63,7 +63,6 @@
                                                         <th>Nome Completo</th>
                                                         <th>CPF</th>
                                                         <th>E-mail</th>
-                                                        <th>Tipo</th>
                                                         @can('Remover Usuários')
                                                             <th>Ações</th>
                                                         @endcan
@@ -87,12 +86,10 @@
                                                             <td title="Encaminhar E-mail"><a
                                                                     href="mailto: {{ $user->email }}"
                                                                     class="text-primary bold">{{ $user->email }}</a></td>
-                                                            <td class="text-muted">{{ $user->getRoleNames()->first() }}
-                                                            </td>
                                                             @can('Remover Usuários')
                                                                 <td class="text-center">
                                                                     <form
-                                                                        action="{{ route('admin.users.destroy', ['user' => $user->id]) }}"
+                                                                        action="{{ route('admin.brokers.destroy', ['broker' => $user->id]) }}"
                                                                         method="post">
                                                                         @csrf
                                                                         @method('delete')

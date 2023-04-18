@@ -10,6 +10,8 @@ use App\Http\Controllers\Web\WebController;
 use App\Http\Controllers\Web\FilterController;
 use App\Http\Controllers\Admin\ACL\RoleController;
 use App\Http\Controllers\Admin\ACL\PermissionController;
+use App\Http\Controllers\Admin\BrokerController;
+use App\Http\Controllers\Admin\ClientController;
 
 /*
   |--------------------------------------------------------------------------
@@ -23,6 +25,7 @@ use App\Http\Controllers\Admin\ACL\PermissionController;
  */
 
 /* * Web */
+
 Route::namespace('Web')->name('web.')->group(function () {
     /** Página inicial */
     Route::get('/', [WebController::class, 'home'])->name('home');
@@ -76,6 +79,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         /** Usuários */
         Route::get('users/team', [UserController::class, 'team'])->name('users.team');
         Route::resource('users', UserController::class);
+        /** Corretores */
+        Route::resource('brokers', BrokerController::class);
+        /** Clientes */
+        Route::resource('clients', ClientController::class);
         /** Empresas */
         Route::resource('companies', CompanyController::class);
         /** Imóveis */
@@ -100,4 +107,3 @@ Route::prefix('admin')->name('admin.')->group(function () {
     /** Rota de logout */
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });
-

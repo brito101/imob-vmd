@@ -5,16 +5,16 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark"><i class="icon-users"></i>Usuários</h1>
+                    <h1 class="m-0 text-dark"><i class="icon-users"></i>Clientes</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6 d-flex justify-content-end">
                     <ol class="breadcrumb  my-auto">
                         <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Usuários</li>
+                        <li class="breadcrumb-item active">Clientes</li>
                     </ol>
                     @can('Cadastrar Usuários')
-                        <a href="{{ route('admin.users.create') }}" class="btn btn bg-gradient-lightblue icon-plus ml-1">Criar
-                            Usuário</a>
+                        <a href="{{ route('admin.clients.create') }}" class="btn btn bg-gradient-lightblue icon-plus ml-1">Criar
+                            Cliente</a>
                     @endcan
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -39,7 +39,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header bg-gradient-dark">
-                            <h5 class="card-title text-white"><i class="icon-users"></i>Usuários Cadastrados</h5>
+                            <h5 class="card-title text-white"><i class="icon-users"></i>Clientes Cadastrados</h5>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool text-white" data-card-widget="collapse">
                                     <i class="fas fa-minus"></i>
@@ -77,7 +77,7 @@
                                                             </td>
                                                             @can('Editar Usuários')
                                                                 <td title="Editar Usuário"><a
-                                                                        href="{{ route('admin.users.edit', ['user' => $user->id]) }}"
+                                                                        href="{{ route('admin.clients.edit', ['client' => $user->id]) }}"
                                                                         class="text-primary bold">{{ $user->name }}</a></td>
                                                             @else
                                                                 <td title="Editar Usuário" class="text-muted bold">
@@ -87,12 +87,14 @@
                                                             <td title="Encaminhar E-mail"><a
                                                                     href="mailto: {{ $user->email }}"
                                                                     class="text-primary bold">{{ $user->email }}</a></td>
-                                                            <td class="text-muted">{{ $user->getRoleNames()->first() }}
                                                             </td>
+                                                            <td class="text-muted">
+                                                                {{ $user->lessor == 1 ? 'Vendedor/Locatário' : '' }}
+                                                                {{ $user->lessee == 1 ? 'Comprador/Locador' : '' }}</td>
                                                             @can('Remover Usuários')
                                                                 <td class="text-center">
                                                                     <form
-                                                                        action="{{ route('admin.users.destroy', ['user' => $user->id]) }}"
+                                                                        action="{{ route('admin.clients.destroy', ['client' => $user->id]) }}"
                                                                         method="post">
                                                                         @csrf
                                                                         @method('delete')
