@@ -2,12 +2,14 @@
 
 namespace App\Mail\Web;
 
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class Contact extends Mailable {
+class Contact extends Mailable
+{
 
     private $data;
 
@@ -19,7 +21,8 @@ class Contact extends Mailable {
      *
      * @return void
      */
-    public function __construct(array $data) {
+    public function __construct(array $data)
+    {
         $this->data = $data;
     }
 
@@ -28,17 +31,44 @@ class Contact extends Mailable {
      *
      * @return $this
      */
-    public function build() {
-        return $this->replyTo($this->data['reply_email'], $this->data['reply_name'])
-                        ->to(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
-                        ->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
-                        ->subject('Novo contato: ' . $this->data['reply_name'])
-                        ->markdown('emails.contact', [
-                            'name' => $this->data['reply_name'],
-                            'email' => $this->data['reply_email'],
-                            'message' => $this->data['message'],
-                            'cell' => $this->data['cell']
-        ]);
+    public function build()
+    {
+        if ($this->data['broker']) {
+            $user = User::where('email', $this->data['broker'])->first();
+            if ($user) {
+                return $this->replyTo($this->data['reply_email'], $this->data['reply_name'])
+                    ->to($user->email, $user->name)
+                    ->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
+                    ->subject('Novo contato: ' . $this->data['reply_name'])
+                    ->markdown('emails.contact', [
+                        'name' => $this->data['reply_name'],
+                        'email' => $this->data['reply_email'],
+                        'message' => $this->data['message'],
+                        'cell' => $this->data['cell']
+                    ]);
+            } else {
+                return $this->replyTo($this->data['reply_email'], $this->data['reply_name'])
+                    ->to(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
+                    ->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
+                    ->subject('Novo contato: ' . $this->data['reply_name'])
+                    ->markdown('emails.contact', [
+                        'name' => $this->data['reply_name'],
+                        'email' => $this->data['reply_email'],
+                        'message' => $this->data['message'],
+                        'cell' => $this->data['cell']
+                    ]);
+            }
+        } else {
+            return $this->replyTo($this->data['reply_email'], $this->data['reply_name'])
+                ->to(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
+                ->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
+                ->subject('Novo contato: ' . $this->data['reply_name'])
+                ->markdown('emails.contact', [
+                    'name' => $this->data['reply_name'],
+                    'email' => $this->data['reply_email'],
+                    'message' => $this->data['message'],
+                    'cell' => $this->data['cell']
+                ]);
+        }
     }
-
 }

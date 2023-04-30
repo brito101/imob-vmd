@@ -5,15 +5,24 @@ namespace App\Http\Requests\Admin;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class Property extends FormRequest {
+class Property extends FormRequest
+{
 
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize() {
+    public function authorize()
+    {
         return Auth::check();
+    }
+
+    public function prepareForValidation()
+    {
+        $this->merge([
+            'broker' => $this->broker ? $this->broker : Auth::user()->id,
+        ]);
     }
 
     /**
@@ -21,7 +30,8 @@ class Property extends FormRequest {
      *
      * @return array
      */
-    public function rules() {
+    public function rules()
+    {
         return [
             'user' => 'required|exists:users,id',
             'category' => 'required|max:191',
@@ -46,7 +56,8 @@ class Property extends FormRequest {
             'neighborhood' => 'required|max:191',
             'state' => 'required|max:191',
             'city' => 'required|max:191',
-            'title' => 'required|max:191'
+            'title' => 'required|max:191',
+            'broker' => 'required|exists:users,id',
         ];
     }
 
@@ -54,7 +65,6 @@ class Property extends FormRequest {
     {
         return [
             'user.required' => 'Campo proprietário obrigatório',
-            ];
+        ];
     }
-
 }

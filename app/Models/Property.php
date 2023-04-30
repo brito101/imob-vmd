@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Storage;
 use App\Support\Cropper;
 use Illuminate\Support\Str;
 
-class Property extends Model {
+class Property extends Model
+{
 
     use HasFactory;
 
@@ -61,22 +62,26 @@ class Property extends Model {
         'title',
         'slug',
         'headline',
-        'experience'
+        'experience',
+        'broker',
     ];
 
     /**
      * Relationships
      */
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class, 'user', 'id');
     }
 
-    public function images() {
+    public function images()
+    {
         return $this->hasMany(PropertyImage::class, 'property', 'id')
-                        ->orderBy('cover', 'ASC');
+            ->orderBy('cover', 'ASC');
     }
 
-    public function cover() {
+    public function cover()
+    {
         $images = $this->images();
         $cover = $images->where('cover', 1)->first(['path']);
         if (!$cover) {
@@ -92,54 +97,63 @@ class Property extends Model {
     /**
      * Scopes
      */
-    public function scopeAvailable($query) {
+    public function scopeAvailable($query)
+    {
         return $query->where('status', 1);
     }
 
-    public function scopeUnavailable($query) {
+    public function scopeUnavailable($query)
+    {
         return $query->where('status', 0);
     }
 
-    public function scopeSale($query) {
+    public function scopeSale($query)
+    {
         return $query->where('sale', 1);
     }
 
-    public function scopeRent($query) {
+    public function scopeRent($query)
+    {
         return $query->where('rent', 1);
     }
 
     /**
      * Accessor
      */
-    public function getSalePriceAttribute($value) {
+    public function getSalePriceAttribute($value)
+    {
         if (empty($value)) {
             return null;
         }
         return number_format($value, 2, ',', '.');
     }
 
-    public function getRentPriceAttribute($value) {
+    public function getRentPriceAttribute($value)
+    {
         if (empty($value)) {
             return null;
         }
         return number_format($value, 2, ',', '.');
     }
 
-    public function getTributeAttribute($value) {
+    public function getTributeAttribute($value)
+    {
         if (empty($value)) {
             return null;
         }
         return number_format($value, 2, ',', '.');
     }
 
-    public function getCondominiumAttribute($value) {
+    public function getCondominiumAttribute($value)
+    {
         if (empty($value)) {
             return null;
         }
         return number_format($value, 2, ',', '.');
     }
 
-    public function getZipcodeAttribute($value) {
+    public function getZipcodeAttribute($value)
+    {
         if (empty($value)) {
             return null;
         }
@@ -149,124 +163,155 @@ class Property extends Model {
     /**
      * Mutators
      */
-    public function setSaleAttribute($value) {
+    public function setSaleAttribute($value)
+    {
         $this->attributes['sale'] = ($value == true || $value == 'on' ? 1 : 0);
     }
 
-    public function setRentAttribute($value) {
+    public function setRentAttribute($value)
+    {
         $this->attributes['rent'] = ($value == true || $value == 'on' ? 1 : 0);
     }
 
-    public function setStatusAttribute($value) {
+    public function setStatusAttribute($value)
+    {
         $this->attributes['status'] = ($value == '1' ? 1 : 0);
     }
 
-    public function setSalePriceAttribute($value) {
+    public function setSalePriceAttribute($value)
+    {
         $this->attributes['sale_price'] = (!empty($value) ? floatval($this->convertStringToDouble($value)) : null);
     }
 
-    public function setRentPriceAttribute($value) {
+    public function setRentPriceAttribute($value)
+    {
         $this->attributes['rent_price'] = (!empty($value) ? floatval($this->convertStringToDouble($value)) : null);
     }
 
-    public function setTributeAttribute($value) {
+    public function setTributeAttribute($value)
+    {
         $this->attributes['tribute'] = (!empty($value) ? floatval($this->convertStringToDouble($value)) : null);
     }
 
-    public function setCondominiumAttribute($value) {
+    public function setCondominiumAttribute($value)
+    {
         $this->attributes['condominium'] = (!empty($value) ? floatval($this->convertStringToDouble($value)) : null);
     }
 
-    public function setZipcodeAttribute($value) {
+    public function setZipcodeAttribute($value)
+    {
         $this->attributes['zipcode'] = (!empty($value) ? $this->clearField($value) : null);
     }
 
-    public function setAirConditioningAttribute($value) {
+    public function setAirConditioningAttribute($value)
+    {
         $this->attributes['air_conditioning'] = (($value === true || $value === 'on') ? 1 : 0);
     }
 
-    public function setBarAttribute($value) {
+    public function setBarAttribute($value)
+    {
         $this->attributes['bar'] = (($value === true || $value === 'on') ? 1 : 0);
     }
 
-    public function setLibraryAttribute($value) {
+    public function setLibraryAttribute($value)
+    {
         $this->attributes['library'] = (($value === true || $value === 'on') ? 1 : 0);
     }
 
-    public function setBarbecueGrillAttribute($value) {
+    public function setBarbecueGrillAttribute($value)
+    {
         $this->attributes['barbecue_grill'] = (($value === true || $value === 'on') ? 1 : 0);
     }
 
-    public function setAmericanKitchenAttribute($value) {
+    public function setAmericanKitchenAttribute($value)
+    {
         $this->attributes['american_kitchen'] = (($value === true || $value === 'on') ? 1 : 0);
     }
 
-    public function setFittedKitchenAttribute($value) {
+    public function setFittedKitchenAttribute($value)
+    {
         $this->attributes['fitted_kitchen'] = (($value === true || $value === 'on') ? 1 : 0);
     }
 
-    public function setPantryAttribute($value) {
+    public function setPantryAttribute($value)
+    {
         $this->attributes['pantry'] = (($value === true || $value === 'on') ? 1 : 0);
     }
 
-    public function setEdiculeAttribute($value) {
+    public function setEdiculeAttribute($value)
+    {
         $this->attributes['edicule'] = (($value === true || $value === 'on') ? 1 : 0);
     }
 
-    public function setOfficeAttribute($value) {
+    public function setOfficeAttribute($value)
+    {
         $this->attributes['office'] = (($value === true || $value === 'on') ? 1 : 0);
     }
 
-    public function setBathtubAttribute($value) {
+    public function setBathtubAttribute($value)
+    {
         $this->attributes['bathtub'] = (($value === true || $value === 'on') ? 1 : 0);
     }
 
-    public function setFirePlaceAttribute($value) {
+    public function setFirePlaceAttribute($value)
+    {
         $this->attributes['fireplace'] = (($value === true || $value === 'on') ? 1 : 0);
     }
 
-    public function setLavatoryAttribute($value) {
+    public function setLavatoryAttribute($value)
+    {
         $this->attributes['lavatory'] = (($value === true || $value === 'on') ? 1 : 0);
     }
 
-    public function setFurnishedAttribute($value) {
+    public function setFurnishedAttribute($value)
+    {
         $this->attributes['furnished'] = (($value === true || $value === 'on') ? 1 : 0);
     }
 
-    public function setPoolAttribute($value) {
+    public function setPoolAttribute($value)
+    {
         $this->attributes['pool'] = (($value === true || $value === 'on') ? 1 : 0);
     }
 
-    public function setSteamRoomAttribute($value) {
+    public function setSteamRoomAttribute($value)
+    {
         $this->attributes['steam_room'] = (($value === true || $value === 'on') ? 1 : 0);
     }
 
-    public function setViewOfTheSeaAttribute($value) {
+    public function setViewOfTheSeaAttribute($value)
+    {
         $this->attributes['view_of_the_sea'] = (($value === true || $value === 'on') ? 1 : 0);
     }
 
-    public function setSlug() {
+    public function setSlug()
+    {
         if (!empty($this->title)) {
             $this->attributes['slug'] = Str::slug($this->title) . '-' . $this->id;
             $this->save();
         }
     }
 
+    public function brokerObject()
+    {
+        return User::find($this->broker);
+    }
+
     /**
      * Aux Functions
      */
-    private function convertStringToDouble($param) {
+    private function convertStringToDouble($param)
+    {
         if (empty($param)) {
             return null;
         }
         return str_replace(',', '.', str_replace('.', '', $param));
     }
 
-    private function clearField(?string $param) {
+    private function clearField(?string $param)
+    {
         if (empty($param)) {
             return null;
         }
         return str_replace(['.', '-', '/', '(', ')', ' '], '', $param);
     }
-
 }

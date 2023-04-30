@@ -202,11 +202,19 @@
                     </div>
 
                     <div class="col-12 col-lg-4 mt-md-0">
-                        <a target="_blank"
-                            href="https://api.whatsapp.com/send?phone=5527992440238&text=Olá, me interessei sobre o seu anúncio."
-                            class="btn btn-success btn-lg btn-block icon-whatsapp mb-3 text-opposit">Converse com o
-                            Corretor!
-                        </a>
+                        @if ($property->broker)
+                            <a target="_blank"
+                                href="https://api.whatsapp.com/send?phone={{ $property->brokerObject()->cell ?? env('CELL') }}&text=Olá, me interessei sobre o seu anúncio."
+                                class="btn btn-success btn-lg btn-block icon-whatsapp mb-3 text-opposit">Converse com o
+                                Corretor!
+                            </a>
+                        @else
+                            <a target="_blank"
+                                href="https://api.whatsapp.com/send?phone={{ env('CELL') }}&text=Olá, me interessei sobre o seu anúncio."
+                                class="btn btn-success btn-lg btn-block icon-whatsapp mb-3 text-opposit">Converse com o
+                                Corretor!
+                            </a>
+                        @endif
 
                         <div class="main_property_contact">
                             <h2 class="bg-custom text-opposite">Entre em contato</h2>
@@ -236,7 +244,8 @@
                                     <textarea name="message" id="message" cols="30" rows="5" class="form-control">
 Quero ter mais informações sobre esse imóvel. (#{{ $property->id }})</textarea>
                                 </div>
-
+                                <input type="hidden" name="broker"
+                                    value="{{ $property->broker ? $property->brokerObject()->email : null }}">
                                 <div class="form-group">
                                     <button class="btn-custom btn-block text-opposit">Enviar</button>
                                     <p class="text-center text-front mb-0 mt-4 font-weight-bold">

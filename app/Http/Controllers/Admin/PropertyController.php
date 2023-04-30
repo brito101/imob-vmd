@@ -15,18 +15,25 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
-class PropertyController extends Controller {
+class PropertyController extends Controller
+{
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
+    public function index()
+    {
         if (!Auth::user()->hasPermissionTo('Listar Imóveis')) {
             throw new UnauthorizedException('403', 'You do not have the required authorization.');
         }
-        $properties = Property::orderBy('id', 'DESC')->get();
+
+        if (Auth::user()->hasRole('Administrador')) {
+            $properties = Property::orderBy('id', 'DESC')->get();
+        } else {
+            $properties = Property::where('broker', Auth::user()->id)->orderBy('id', 'DESC')->get();
+        }
         return view('admin.properties.index', [
             'properties' => $properties
         ]);
@@ -37,13 +44,16 @@ class PropertyController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
+    public function create()
+    {
         if (!Auth::user()->hasPermissionTo('Cadastrar Imóveis')) {
             throw new UnauthorizedException('403', 'You do not have the required authorization.');
         }
         $users = User::orderBy('name')->get();
+        $brokers = User::where('broker', true)->orderBy('name')->get();
         return view('admin.properties.create', [
-            'users' => $users
+            'users' => $users,
+            'brokers' => $brokers
         ]);
     }
 
@@ -53,7 +63,8 @@ class PropertyController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PropertyRequest $request) {
+    public function store(PropertyRequest $request)
+    {
         if (!Auth::user()->hasPermissionTo('Cadastrar Imóveis')) {
             throw new UnauthorizedException('403', 'You do not have the required authorization.');
         }
@@ -62,7 +73,7 @@ class PropertyController extends Controller {
         $validator = Validator::make($request->only('files'), ['files.*' => 'image|max:1024000']);
         if ($validator->fails() === true) {
             return redirect()->back()->withInput()
-                            ->with(['message' => 'Todas as imagens devem ser do tipo jpg, jpeg ou png.', 'type' => 'danger', 'icon' => 'exclamation-triangle']);
+                ->with(['message' => 'Todas as imagens devem ser do tipo jpg, jpeg ou png.', 'type' => 'danger', 'icon' => 'exclamation-triangle']);
         }
         if ($request->allFiles()) {
             foreach ($request->allFiles()['files'] as $image) {
@@ -74,8 +85,8 @@ class PropertyController extends Controller {
             }
         }
         return redirect()->route('admin.properties.edit', [
-                    'property' => $createProperty->id
-                ])->with(['message' => 'Imóvel criado com sucesso!', 'type' => 'success', 'icon' => 'check']);
+            'property' => $createProperty->id
+        ])->with(['message' => 'Imóvel criado com sucesso!', 'type' => 'success', 'icon' => 'check']);
     }
 
     /**
@@ -84,7 +95,8 @@ class PropertyController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id) {
+    public function show($id)
+    {
         //
     }
 
@@ -94,18 +106,27 @@ class PropertyController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id) {
+    public function edit($id)
+    {
         if (!Auth::user()->hasPermissionTo('Editar Imóveis')) {
             throw new UnauthorizedException('403', 'You do not have the required authorization.');
         }
-        $property = Property::where('id', $id)->first();
+
+        if (Auth::user()->hasRole('Administrador')) {
+            $property = Property::where('id', $id)->first();
+        } else {
+            $property = Property::where('broker', Auth::user()->id)->where('id', $id)->first();
+        }
+
         if (empty($property->id)) {
             throw new UnauthorizedException('403', 'You do not have the required authorization.');
         }
         $users = User::orderBy('name')->get();
+        $brokers = User::where('broker', true)->orderBy('name')->get();
         return view('admin.properties.edit', [
             'property' => $property,
-            'users' => $users
+            'users' => $users,
+            'brokers' => $brokers
         ]);
     }
 
@@ -116,11 +137,18 @@ class PropertyController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PropertyRequest $request, $id) {
-          if (!Auth::user()->hasPermissionTo('Editar Imóveis')) {
+    public function update(PropertyRequest $request, $id)
+    {
+        if (!Auth::user()->hasPermissionTo('Editar Imóveis')) {
             throw new UnauthorizedException('403', 'You do not have the required authorization.');
         }
-        $property = Property::where('id', $id)->first();
+
+        if (Auth::user()->hasRole('Administrador')) {
+            $property = Property::where('id', $id)->first();
+        } else {
+            $property = Property::where('broker', Auth::user()->id)->where('id', $id)->first();
+        }
+
         if (empty($property->id)) {
             throw new UnauthorizedException('403', 'You do not have the required authorization.');
         }
@@ -153,7 +181,7 @@ class PropertyController extends Controller {
 
         if ($validator->fails() === true) {
             return redirect()->back()->withInput()
-                            ->with(['message' => 'Todas as imagens devem ser do tipo jpg, jpeg ou png.', 'type' => 'danger', 'icon' => 'exclamation-triangle']);
+                ->with(['message' => 'Todas as imagens devem ser do tipo jpg, jpeg ou png.', 'type' => 'danger', 'icon' => 'exclamation-triangle']);
         }
 
         if ($request->allFiles()) {
@@ -167,8 +195,8 @@ class PropertyController extends Controller {
         }
 
         return redirect()->route('admin.properties.edit', [
-                    'property' => $property->id
-                ])->with(['message' => 'Imóvel atualizado com sucesso!', 'type' => 'success', 'icon' => 'check']);
+            'property' => $property->id
+        ])->with(['message' => 'Imóvel atualizado com sucesso!', 'type' => 'success', 'icon' => 'check']);
     }
 
     /**
@@ -177,11 +205,18 @@ class PropertyController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id) {
-          if (!Auth::user()->hasPermissionTo('Remover Imóveis')) {
+    public function destroy($id)
+    {
+        if (!Auth::user()->hasPermissionTo('Remover Imóveis')) {
             throw new UnauthorizedException('403', 'You do not have the required authorization.');
         }
-        $property = Property::where('id', $id)->first();
+
+        if (Auth::user()->hasRole('Administrador')) {
+            $property = Property::where('id', $id)->first();
+        } else {
+            $property = Property::where('broker', Auth::user()->id)->where('id', $id)->first();
+        }
+
         if (empty($property->id)) {
             throw new UnauthorizedException('403', 'You do not have the required authorization.');
         }
@@ -189,7 +224,8 @@ class PropertyController extends Controller {
         return redirect()->route('admin.properties.index')->with(['message' => 'Imóvel removido com sucesso!', 'type' => 'success', 'icon' => 'trash']);
     }
 
-    public function imageSetCover(Request $request) {
+    public function imageSetCover(Request $request)
+    {
         $imageSetCover = PropertyImage::where('id', $request->image)->first();
         $allImage = PropertyImage::where('property', $imageSetCover->property)->get();
         foreach ($allImage as $image) {
@@ -204,7 +240,8 @@ class PropertyController extends Controller {
         return response()->json($json);
     }
 
-    public function imageRemove(Request $request) {
+    public function imageRemove(Request $request)
+    {
         $imageDelete = PropertyImage::where('id', $request->image)->first();
         Storage::delete($imageDelete->path);
         Cropper::flush($imageDelete->path);
@@ -214,5 +251,4 @@ class PropertyController extends Controller {
         ];
         return response()->json($json);
     }
-
 }
