@@ -324,11 +324,11 @@ Quero ter mais informações sobre esse imóvel. (#{{ $property->id }})</textare
         }
     </script>
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDvd0ir22Xo3q0-krBSCXBZQ21fBsfb6ys&callback=markMap"></script>
+        src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&callback=markMap"></script>
 
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous"
-        src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v3.3&appId=550149899141611&autoLogAppEvents=1">
+        src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v3.3&appId={{ env('GOOGLE_MAPS_API_ID') }}&autoLogAppEvents=1">
     </script>
     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 @endsection
