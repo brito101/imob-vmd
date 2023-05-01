@@ -200,6 +200,50 @@
                             </li>
                         @endcan
 
+                        @can('Listar Vendas')
+                            {{-- Menu Contratos --}}
+                            <li class="nav-item has-treeview {{ menuOpen('admin.sales') }}">
+                                <a href="#" class="nav-link  {{ isActive('admin.sales') }}"><i
+                                        class="nav-icon icon-money"></i>
+                                    <p>Vendas<i class="fas fa-angle-left right"></i></p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item"><a href="{{ route('admin.sales.index') }}"
+                                            class="nav-link {{ isActive('admin.sales.index') }}"><i
+                                                class="far fa-circle nav-icon"></i>
+                                            <p>Ver Todas</p>
+                                        </a></li>
+                                    <li class="nav-item"><a href="{{ route('admin.sales.create') }}"
+                                            class="nav-link {{ isActive('admin.sales.create') }}"><i
+                                                class="far fa-circle nav-icon"></i>
+                                            <p>Criar Nova</p>
+                                        </a></li>
+                                </ul>
+                            </li>
+                        @endcan
+
+                        @can('Listar Locações')
+                            {{-- Menu Contratos --}}
+                            <li class="nav-item has-treeview {{ menuOpen('admin.rents') }}">
+                                <a href="#" class="nav-link  {{ isActive('admin.rents') }}"><i
+                                        class="nav-icon icon-file"></i>
+                                    <p>Locações<i class="fas fa-angle-left right"></i></p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item"><a href="{{ route('admin.rents.index') }}"
+                                            class="nav-link {{ isActive('admin.rents.index') }}"><i
+                                                class="far fa-circle nav-icon"></i>
+                                            <p>Ver Todas</p>
+                                        </a></li>
+                                    <li class="nav-item"><a href="{{ route('admin.rents.create') }}"
+                                            class="nav-link {{ isActive('admin.rents.create') }}"><i
+                                                class="far fa-circle nav-icon"></i>
+                                            <p>Criar Nova</p>
+                                        </a></li>
+                                </ul>
+                            </li>
+                        @endcan
+
                         @can(['Listar Perfis', 'Listar Permissões'])
                             {{-- Menu ACL --}}
                             <li

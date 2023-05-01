@@ -12,6 +12,8 @@ use App\Http\Controllers\Admin\ACL\RoleController;
 use App\Http\Controllers\Admin\ACL\PermissionController;
 use App\Http\Controllers\Admin\BrokerController;
 use App\Http\Controllers\Admin\ClientController;
+use App\Http\Controllers\Admin\RentController;
+use App\Http\Controllers\Admin\SaleController;
 
 /*
   |--------------------------------------------------------------------------
@@ -94,6 +96,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('contracts/get-data-acquirer', [ContractController::class, 'getDataAcquirer'])->name('contracts.getDataAcquirer');
         Route::post('contracts/get-data-property', [ContractController::class, 'getDataProperty'])->name('contracts.getDataProperty');
         Route::resource('contracts', ContractController::class);
+        /** Sales */
+        Route::resource('sales', SaleController::class);
+        /** Rents */
+        Route::resource('rents', RentController::class);
 
         /** ACL */
         /** Permissões */

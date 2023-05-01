@@ -242,5 +242,9 @@ return [
         'fgts' => 'FGTS',
         'entry_value' => 'valor de entrada',
         'bank_account' => 'dados bancários',
+        'value' => 'valor',
+        'date_of_sale' => 'data da venda',
+        'init_date' => 'data de início',
+        'end_date' => 'data de término',
     ],
 ];
