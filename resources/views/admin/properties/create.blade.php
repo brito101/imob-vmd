@@ -476,6 +476,15 @@
                                                 <label class="label">
                                                     <span class="legend">Experiência</span>
                                                     <select name="experience" class="select2">
+                                                        <option value="Casa"
+                                                            {{ old('experience') == 'Casa' ? 'selected' : '' }}>
+                                                            Casa</option>
+                                                        <option value="Terreno"
+                                                            {{ old('experience') == 'Terreno' ? 'selected' : '' }}>
+                                                            Terreno</option>
+                                                        <option value="Apartamento Padrão"
+                                                            {{ old('experience') == 'Apartamento Padrão' ? 'selected' : '' }}>
+                                                            Apartamento Padrão</option>
                                                         <option value="Cobertura"
                                                             {{ old('experience') == 'Cobertura' ? 'selected' : '' }}>
                                                             Cobertura</option>

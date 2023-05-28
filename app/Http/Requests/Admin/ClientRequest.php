@@ -27,9 +27,9 @@ class ClientRequest extends FormRequest
         return [
             'name' => 'required|min:3|max:191',
             'genre' => 'in:male,female,other',
-            'document' => (!empty($this->request->all()['id']) ? 'required|min:11|max:14|unique:users,document,' . $this->request->all()['id'] : 'required|min:11|max:14|unique:users,document'),
-            'document_secondary' => 'required|max:12',
-            'document_secondary_complement' => 'required',
+            'document' => (!empty($this->request->all()['id']) ? 'nullable|min:11|max:14|unique:users,document,' . $this->request->all()['id'] : 'nullable|min:11|max:14|unique:users,document'),
+            'document_secondary' => 'nullable|max:12',
+            'document_secondary_complement' => 'nullable',
             'date_of_birth' => 'nullable|date_format:d/m/Y',
             'place_of_birth' => 'nullable',
             'civil_status' => 'nullable|in:married,separated,single,divorced,widower',
@@ -39,16 +39,16 @@ class ClientRequest extends FormRequest
             'income' => 'nullable',
             'company_work' => 'nullable',
             // Address
-            'zipcode' => 'required|min:8|max:10',
-            'street' => 'required',
-            'number' => 'required',
-            'neighborhood' => 'required',
-            'state' => 'required',
-            'city' => 'required',
+            'zipcode' => 'nullable|min:8|max:10',
+            'street' => 'nullable',
+            'number' => 'nullable',
+            'neighborhood' => 'nullable',
+            'state' => 'nullable',
+            'city' => 'nullable',
             // Contact
-            'cell' => 'required',
+            'cell' => 'nullable',
             // Access
-            'email' => (!empty($this->request->all()['id']) ? 'required|email|unique:users,email,' . $this->request->all()['id'] : 'required|email|unique:users,email'),
+            'email' => (!empty($this->request->all()['id']) ? 'nullable|email|unique:users,email,' . $this->request->all()['id'] : 'nullable|email|unique:users,email'),
             // Spouse
             'type_of_communion' => 'required_if:civil_status,married,separated|in:Comunhão Universal de Bens,Comunhão Parcial de Bens,Separação Total de Bens,Participação Final de Aquestos',
             'spouse_name' => 'required_if:civil_status,married,separated|min:3|max:191',

@@ -211,7 +211,31 @@ class WebController extends Controller
                 route('web.experienceCategory', ['slug' => 'lojas-e-salas']),
                 asset('frontend/assets/images/share.png')
             );
-        } else {
+        } elseif ($request->slug == 'casas') {
+            $properties = Property::where('experience', 'Casa')->where('status', '=', '1')->get();
+            $head = $this->seo->render(
+                env('APP_NAME') . ' :: Casas',
+                'Viva a experiência de morar nas casas dos seus sonhos na melhor e mais completa imobiliária de Espirito Santo',
+                route('web.experienceCategory', ['slug' => 'casas']),
+                asset('frontend/assets/images/share.png')
+            );
+        } elseif ($request->slug == 'terrenos') {
+            $properties = Property::where('experience', 'Terreno')->where('status', '=', '1')->get();
+            $head = $this->seo->render(
+                env('APP_NAME') . ' :: Casas',
+                'Viva a experiência de adquirir o terreno dos seus sonhos na melhor e mais completa imobiliária de Espirito Santo',
+                route('web.experienceCategory', ['slug' => 'terrenos']),
+                asset('frontend/assets/images/share.png')
+            );
+        } elseif ($request->slug == 'apartamentos-padrao') {
+            $properties = Property::where('experience', 'Apartamento Padrão')->where('status', '=', '1')->get();
+            $head = $this->seo->render(
+                env('APP_NAME') . ' :: Casas',
+                'Viva a experiência de morar no apartamento padrão dos seus sonhos na melhor e mais completa imobiliária de Espirito Santo',
+                route('web.experienceCategory', ['slug' => 'terrenos']),
+                asset('frontend/assets/images/share.png')
+            );
+        }else {
             $properties = Property::whereNotNull('experience')->where('status', '=', '1')->get();
             $head = $this->seo->render(
                 env('APP_NAME') . ' :: Experiência',

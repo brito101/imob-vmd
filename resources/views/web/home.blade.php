@@ -134,6 +134,30 @@
 
             <div class="main_list_group_item row mt-5 d-flex justify-content-around">
                 <article class="main_list_group_items_item col-12 col-md-6 col-lg-4 mb-4">
+                    <a href="{{ route('web.experienceCategory', ['slug' => 'casas']) }}">
+                        <div class="d-flex align-items-center justify-content-center shadow-sm rounded"
+                            style="background: url('frontend/assets/images/home/casa.jpg') no-repeat; background-size: cover;">
+                            <h2 class="text-opposit">Casa</h2>
+                        </div>
+                    </a>
+                </article>
+                <article class="main_list_group_items_item col-12 col-md-6 col-lg-4 mb-4">
+                    <a href="{{ route('web.experienceCategory', ['slug' => 'terrenos']) }}">
+                        <div class="d-flex align-items-center justify-content-center shadow-sm rounded"
+                            style="background: url('frontend/assets/images/home/terreno.jpg') no-repeat; background-size: cover;">
+                            <h2 class="text-opposit">Terreno</h2>
+                        </div>
+                    </a>
+                </article>
+                <article class="main_list_group_items_item col-12 col-md-6 col-lg-4 mb-4">
+                    <a href="{{ route('web.experienceCategory', ['slug' => 'apartamentos-padrao']) }}">
+                        <div class="d-flex align-items-center justify-content-center shadow-sm rounded"
+                            style="background: url('frontend/assets/images/home/apartamento.jpg') no-repeat; background-size: cover;">
+                            <h2 class="text-opposit">Apartamento Padrão</h2>
+                        </div>
+                    </a>
+                </article>
+                <article class="main_list_group_items_item col-12 col-md-6 col-lg-4 mb-4">
                     <a href="{{ route('web.experienceCategory', ['slug' => 'cobertura']) }}">
                         <div class="d-flex align-items-center justify-content-center shadow-sm rounded"
                             style="background: url('frontend/assets/images/home/cobertura_oto_1.jpg') no-repeat; background-size: cover;">

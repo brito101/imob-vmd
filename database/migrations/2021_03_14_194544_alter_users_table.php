@@ -19,7 +19,7 @@ class AlterUsersTable extends Migration {
 
             /** data */
             $table->string('genre')->nullable();
-            $table->string('document')->unique();
+            $table->string('document')->unique()->nullable();
             $table->string('document_secondary', 20)->nullable();
             $table->string('document_secondary_complement')->nullable();
             $table->date('date_of_birth')->nullable();
