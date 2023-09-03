@@ -20,16 +20,17 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="image/webp" href="{{ url(asset('frontend/assets/images/logo.webp')) }}" />
 
-    {{-- @if (Cookie::get(env('COOKIE_CONSENT_NAME')) == '1')
+    @if (Cookie::get(env('COOKIE_CONSENT_NAME')) == '1')
         @include('cookieConsent::gtm-head')
-    @endif --}}
+    @endif
 
 </head>
 
 <body>
 
-    {{-- @include('cookieConsent::index')
+    @include('cookieConsent::index')
 
+    {{--
     @if (Cookie::get(env('COOKIE_CONSENT_NAME')) == '1')
         @include('cookieConsent::gtm-body')
     @endif --}}
